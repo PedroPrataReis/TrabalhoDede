@@ -40,6 +40,15 @@ footer{
     bottom: -75px;
 }
 
+.FooterSemConteudo{
+    background-color:  #a5a5a5;
+    position: absolute;
+    height: 75px;
+    width: 100%;
+    font-size: 20px;
+    top: 100%;
+}
+
 
 
 #TabelaMenu{
@@ -184,4 +193,59 @@ nav{
 
 .LinkSocial{
     display: inline;
+}
+
+
+
+.paragrafo{
+    color: rgba(255, 255, 255, 0);
+}
+
+#TextoSobre{
+    text-align: justify;
+    display: inline-block;
+    padding-top: 6%;
+    padding-bottom: 15%;
+    font-size: 35px;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+}
+
+#TituloSobre{
+    text-align: center;
+    font-size: 45px;
+    margin-bottom: 25px;
+}
+
+.DivIC{
+    text-align: center;
+    display: inline-block;
+    padding-top: 6%;
+    padding-bottom: 15%;
+    font-size: 35px;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+}
+
+.TituloIC{
+    font-size: 45px;
+    margin-bottom: 25px;
+}
+
+.BotaoIC{
+    display: inline-block;
+    background-color: #ff6740;
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-top: 2%;
+}
+
+.BotaoIC:hover{
+    background-color:  #ff572d;
 }
