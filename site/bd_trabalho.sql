@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 11-Jun-2021 às 23:00
+-- Tempo de geração: 16-Jun-2021 às 17:20
 -- Versão do servidor: 5.7.31
 -- versão do PHP: 7.3.21
 
@@ -31,14 +31,22 @@ USE `bd_trabalho`;
 
 DROP TABLE IF EXISTS `tb_cliente`;
 CREATE TABLE IF NOT EXISTS `tb_cliente` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email_cliente` varchar(250) NOT NULL,
   `nome_cliente` varchar(50) NOT NULL,
   `telefone_cliente` int(11) NOT NULL,
-  `email_cliente` varchar(30) NOT NULL,
   `bairro` varchar(50) NOT NULL,
   `rua` varchar(50) NOT NULL,
-  `número` int(5) NOT NULL,
-  PRIMARY KEY (`email_cliente`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `numero` int(5) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_cliente`
+--
+
+INSERT INTO `tb_cliente` (`id`, `email_cliente`, `nome_cliente`, `telefone_cliente`, `bairro`, `rua`, `numero`) VALUES
+(1, 'jose@gmail.com', 'jose silva', 12345678, 'bom pastor', 'dos bobos', 123);
 
 -- --------------------------------------------------------
 
@@ -48,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `tb_cliente` (
 
 DROP TABLE IF EXISTS `tb_produto`;
 CREATE TABLE IF NOT EXISTS `tb_produto` (
-  `codigo_produto` int(3) NOT NULL,
+  `codigo_produto` int(3) NOT NULL AUTO_INCREMENT,
   `nome_produto` varchar(30) NOT NULL,
   `preco_produto` float NOT NULL,
   `descricao_produto` varchar(300) NOT NULL,
