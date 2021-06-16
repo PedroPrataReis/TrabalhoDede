@@ -17,8 +17,6 @@
         
         <link rel="icon" href="../../imagens/icon.png">
         
-        <?php use \app\inclusao.php; ?>
-        
 	</head>
 	<body>    
     <table>
@@ -67,35 +65,27 @@
                 <a href="../../login/" id="BotaoLogin"><div>Entrar</div></a>
             </nav>
                 
-                <div>
+                <div class="DivIncluir">
                     
-                    <h1>CADASTRO DO PRODUTO</h1>
+                    <h1 class="TituloIncluir">Cadastro do Produto</h1>
                       <form method="POST" action="../../app/inclusao.php" name="form_inclusao">
-                        <table width="600">
+                        <table class="TabelaIncluir">
                           <tr>
-                            <td>Código:</td>
+                            <td class="LabelIncluir">Nome:<span class="Paragrafo">-</span></td>
                             <td>
-                              <input name="codigo_produto" type="text" id="codigo_produto" size="10" maxlength="3" required="required">
+                              <input name="nome_produto" type="text" id="nome_produto" size="30" required="required">
                             </td>
                           </tr>
                           <tr>
-                            <td>Nome:</td>
+                            <td class="LabelIncluir">Preço:<span class="Paragrafo">-</span></td>
                             <td>
-                              <input name="nome_produto" type="text" id="nome_produto" size="30" maxlength="30" required="required">
+                              <input name="preco_produto" id="preco_produto" type="text"  size="30" required="required">
                             </td>
                           </tr>
                           <tr>
-                            <td>Preço:</td>
+                            <td class="LabelIncluir">Descrição:<span class="Paragrafo">-</span></td>
                             <td>
-                              <textarea name="preco_produto" id="preco_produto"
-                              rows="5" cols="60" required="required"></textarea>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Descrição:</td>
-                            <td>
-                              <textarea name="descricao_produto" id="descricao_produto"
-                              rows="4" cols="80" required="required"></textarea>
+                              <input name="descricao_produto" id="descricao_produto" type="text"  size="30"  required="required">
                             </td>
                           </tr>
                           <tr>
@@ -110,7 +100,7 @@
                     
                 </div>
                 
-            <footer>
+            <footer class="FooterSemConteudo">
                 <span id="TextoFooter">© Burger Queen 2021</span>
                 <div id="Redes">
                     <a href="../../sobre/" class="LinkSocial">

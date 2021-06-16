@@ -197,7 +197,7 @@ nav{
 
 
 
-.paragrafo{
+.Paragrafo{
     color: rgba(255, 255, 255, 0);
 }
 
@@ -248,4 +248,70 @@ nav{
 
 .BotaoIC:hover{
     background-color:  #ff572d;
+}
+
+
+
+.DivIncluir{
+    position: relative;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+    text-align: center;
+    padding-top: 5%;
+}
+
+.TabelaIncluir{
+    display: inline-block;
+}
+
+.TituloIncluir{
+    margin-bottom: 2%;
+}
+
+.LabelIncluir{
+    text-align: right;
+}
+
+#botao {
+    display: inline-block;
+    font: bold 15px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}
+
+.DivCadastrados{
+    position: relative;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+    text-align: center;
+    padding-top: 5%;
+}
+
+.TabelaCadastrados{
+    display: inline-block;
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 25px;
+}
+
+.TituloCadastrados{
+    margin-bottom: 3%;
+}
+
+.THTabelaCadastrados{
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.TDTabelaCadastrados{
+    border: 1px solid black;
+    padding: 5px;
 }

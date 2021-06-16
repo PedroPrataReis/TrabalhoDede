@@ -65,13 +65,51 @@
                 <a href="../../login/" id="BotaoLogin"><div>Entrar</div></a>
             </nav>
                 
-                <div>
+                <div class="DivCadastrados">
                     
-                    
+                    <?php
+                        require_once"../../app/conexao.php";
+                        try
+                        {
+                            $codigo_produto = "";
+                            $nome_produto = "";
+                            $preco_produto = "";
+                            $descricao_produto = "";
+                            $ComandoSQL = "select*from tb_produto";
+                            $bq = $conexao->query($ComandoSQL);
+                            
+                            echo"<h1 class='TituloCadastrados'>Hamburgers Cadastrados</h1>
+                            
+                            <table class='TabelaCadastrados'>
+                            <tr>
+                                <th class='THTabelaCadastrados'>Código</th>
+                                <th class='THTabelaCadastrados'>Nome</th>
+                                <th class='THTabelaCadastrados'>Preço</th>
+                                <th class='THTabelaCadastrados'>Descrição</th>
+                            </tr>
+                            ";
+                            
+                            while ($i = $bq->fetch(PDO::FETCH_OBJ)) {
+                                echo"<tr>";
+                                echo"<td class='TDTabelaCadastrados'>".$i->codigo_produto."</td>";
+                                echo"<td class='TDTabelaCadastrados'>".$i->nome_produto."</td>";
+                                echo"<td class='TDTabelaCadastrados'>".$i->preco_produto."</td>";
+                                echo"<td class='TDTabelaCadastrados'>".$i->descricao_produto."</td>";
+                                echo"</tr>";
+                            }
+                            
+                            echo"</table><br><br>
+                            <a href='../incluir/' id='botao'>Incluir</a>
+                            ";
+
+                        } catch (PDOException $e) {
+                            echo"erro";
+                        }
+                        ?>
                     
                 </div>
                 
-            <footer>
+            <footer class="FooterSemConteudo">
                 <span id="TextoFooter">© Burger Queen 2021</span>
                 <div id="Redes">
                     <a href="../../sobre/" class="LinkSocial">
