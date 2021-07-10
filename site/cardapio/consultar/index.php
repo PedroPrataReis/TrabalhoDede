@@ -82,7 +82,6 @@
                             
                             <table class='TabelaCadastrados'>
                             <tr>
-                                <th class='THTabelaCadastrados'>Código</th>
                                 <th class='THTabelaCadastrados'>Nome</th>
                                 <th class='THTabelaCadastrados'>Preço</th>
                                 <th class='THTabelaCadastrados'>Descrição</th>
@@ -91,7 +90,6 @@
                             
                             while ($i = $bq->fetch(PDO::FETCH_OBJ)) {
                                 echo"<tr>";
-                                echo"<td class='TDTabelaCadastrados'>".$i->codigo_produto."</td>";
                                 echo"<td class='TDTabelaCadastrados'>".$i->nome_produto."</td>";
                                 echo"<td class='TDTabelaCadastrados'>".$i->preco_produto."</td>";
                                 echo"<td class='TDTabelaCadastrados'>".$i->descricao_produto."</td>";
