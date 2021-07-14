@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 16-Jun-2021 às 17:20
+-- Tempo de geração: 14-Jul-2021 às 03:34
 -- Versão do servidor: 5.7.31
 -- versão do PHP: 7.3.21
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `bd_trabalho`
 --
-CREATE DATABASE IF NOT EXISTS `bd_trabalho` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `bd_trabalho`;
 
 -- --------------------------------------------------------
 
@@ -39,14 +37,7 @@ CREATE TABLE IF NOT EXISTS `tb_cliente` (
   `rua` varchar(50) NOT NULL,
   `numero` int(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `tb_cliente`
---
-
-INSERT INTO `tb_cliente` (`id`, `email_cliente`, `nome_cliente`, `telefone_cliente`, `bairro`, `rua`, `numero`) VALUES
-(1, 'jose@gmail.com', 'jose silva', 12345678, 'bom pastor', 'dos bobos', 123);
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
