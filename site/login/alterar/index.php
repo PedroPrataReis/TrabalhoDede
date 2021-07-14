@@ -62,7 +62,7 @@
             
             <nav>
                 <a href="../../" id="NomeSite">BurgerQueen</a>
-                <a href="../../login/" id="BotaoLogin"><div>Entrar</div></a>
+                <a href="../../login/incluir/" id="BotaoLogin"><div>Entrar</div></a>
             </nav>
                 
             <div class="DivIncluir">
@@ -86,45 +86,46 @@
                   <input type="hidden" name="re" value="'.$re.'">
                     <table class="TabelaIncluir">
                       <tr>
-                        <td class="LabelIncluir">Email:<span class="Paragrafo">-</span></td>
+                        <td class="LabelIncluir"><label for="email_cliente">Email:</label><span class="Paragrafo">-</span></td>
                         <td>
                           <input name="email_cliente" type="text" id="email_cliente" size="30" required="required" value="'.$row->email_cliente.'">
                         </td>
                       </tr>
                       <tr>
-                        <td class="LabelIncluir">Nome:<span class="Paragrafo">-</span></td>
+                        <td class="LabelIncluir"><label for="nome_cliente">Nome:</label><span class="Paragrafo">-</span></td>
                         <td>
                           <input name="nome_cliente" type="text" id="nome_cliente" size="30" required="required" value="'.$row->nome_cliente.'">
                         </td>
                       </tr>
                       <tr>
-                        <td class="LabelIncluir">Telefone:<span class="Paragrafo">-</span></td>
+                        <td class="LabelIncluir"><label for="telefone_cliente">Telefone:</label><span class="Paragrafo">-</span></td>
                         <td>
                           <input type="text" name="telefone_cliente" id="telefone_cliente" size="30"  required="required" value="'.$row->telefone_cliente.'">
                         </td>
                       </tr>
                       <tr>
-                        <td class="LabelIncluir">Bairro:<span class="Paragrafo">-</span></td>
+                        <td class="LabelIncluir"><label for="bairro">Bairro:</label><span class="Paragrafo">-</span></td>
                         <td>
                           <input type="text" name="bairro" id="bairro"  size="30"  required="required" value="'.$row->bairro.'">
                         </td>
                       </tr>
                       <tr>
-                        <td class="LabelIncluir">Rua:<span class="Paragrafo">-</span></td>
+                        <td class="LabelIncluir"><label for="rua">Rua:</label><span class="Paragrafo">-</span></td>
                         <td>
                           <input type="text" name="rua" id="rua"  size="30" required="required" value="'.$row->rua.'">
                         </td>
                       </tr>
                       <tr>
-                        <td class="LabelIncluir">Número:<span class="Paragrafo">-</span></td>
+                        <td class="LabelIncluir"><label for="numero">Número:</label><span class="Paragrafo">-</span></td>
                         <td>
                           <input type="text" name="numero" id="numero"  size="30"  required="required" value="'.$row->numero.'">
                         </td>
                       </tr>
+
                       <tr>
                         <td colspan="2">
                           <br>
-                          <input type="submit" name="enviar" value="Enviar">
+                          <input type="submit" name="enviar" value="Alterar">
                         </td>
                       </tr>
                     </table>

@@ -43,11 +43,11 @@ if ($_POST['form_operacao'] == "inclusao_cliente")
         $linhas = floor($linhas/5);
 
         if ($statement->execute()) {
-            header("Location: ../login/consultar/consultar.php?pag=".$linhas);
+            header("Location: ../login/consultar.php?pag=".$linhas);
         }
 	} catch (Exception $e) {
         // caso ocorra uma exceção, exibe na tela
-        header("Location: ../login/consultar/consultar.php?pag=".$linhas);
+        header("Location: ../login/consultar.php?pag=".$linhas);
 		echo "<script>alert('Erro".$e->getMessage()."')</script>";
         die();
     }

@@ -62,15 +62,57 @@
             
             <nav>
                 <a href="../../" id="NomeSite">BurgerQueen</a>
-                <a href="../../login/" id="BotaoLogin"><div>Entrar</div></a>
+                <a href="../../login/incluir/" id="BotaoLogin"><div>Entrar</div></a>
             </nav>
                 
             <div class="DivIncluir">
 
             <?php
-              
-              
-              
+                require_once '../../app/conexao.php';
+
+                $cd = $_GET['cd'];
+                $re = $_GET['re'];
+                    
+                $ComandoSQL = "SELECT * FROM tb_produto WHERE codigo_produto = ".$cd;
+
+                $u=$conexao->query($ComandoSQL);
+
+                while($row = $u->fetch(PDO::FETCH_OBJ)){
+
+                echo'
+                    <h1 class="TituloIncluir">Alteração Produto</h1>
+                    <form method="POST" action="../../app/alteracao_produto.php">
+                    <input type="hidden" name="codigo_produto" value="'.$row->codigo_produto.'">
+                    <input type="hidden" name="re" value="'.$re.'">
+                    <table class="TabelaIncluir">
+                        <tr>
+                        <td class="LabelIncluir"><label for="nome_produto">Nome:</label><span class="Paragrafo">-</span></td>
+                        <td>
+                            <input name="nome_produto" type="text" id="nome_produto" size="30" required="required" value="'.$row->nome_produto.'">
+                        </td>
+                        </tr>
+                        <tr>
+                        <td class="LabelIncluir"><label for="preco_produto">Preço:</label><span class="Paragrafo">-</span></td>
+                        <td>
+                            <input type="text" name="preco_produto" id="preco_produto" size="30"  required="required" value="'.$row->preco_produto.'">
+                        </td>
+                        </tr>
+                        <tr>
+                        <td class="LabelIncluir"><label for="descricao_produto">Descrição:</label><span class="Paragrafo">-</span></td>
+                        <td>
+                            <input type="text" name="descricao_produto" id="descricao_produto"  size="30"  required="required" value="'.$row->descricao_produto.'">
+                        </td>
+                        </tr>
+                        
+                        <td colspan="2">
+                            <br>
+                            <input type="submit" name="enviar" value="Alterar">
+                        </td>
+                        </tr>
+                    </table>
+                    </form>
+                ';
+                }
             ?>
 
             </div>

@@ -290,7 +290,7 @@ nav{
 }
 
 .TituloCadastrados{
-    margin-bottom: 3%;
+    margin-bottom: 2%;
 }
 
 .THTabelaCadastrados{
@@ -301,4 +301,32 @@ nav{
 .TDTabelaCadastrados{
     border: 1px solid black;
     padding: 5px;
+}
+
+
+
+.npag{
+    font-size: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.Alterar, .Excluir{
+    display: inline-block;
+}
+
+.Seta, .SetaApagada{
+    display: inline-block;
+}
+
+.LabelPesquisa{
+    font-size: 20px;
+}
+
+.InputPesquisa{
+    margin-right: 15px;
+}
+
+#BotaoPesquisar{
+    margin-left: 5px;
 }

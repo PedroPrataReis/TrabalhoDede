@@ -27,12 +27,17 @@ if ($_POST['form_operacao'] == "inclusao_produto")
         $statement->bindValue(':preco_produto', $preco_produto);
         $statement->bindValue(':descricao_produto', $descricao_produto);
         
+        $l = $conexao->query("SELECT codigo_produto FROM tb_produto");
+        $linhas = $l->rowCount();
+
+        $linhas = floor($linhas/5);
+        
         if ($statement->execute()) {
-            header("Location: ../cardapio/consultar/");
+            header("Location: ../cardapio/consultar.php?pag=".$linhas);
         }
 	} catch (Exception $e) {
         // caso ocorra uma exceção, exibe na tela
-        header("Location: ../cardapio/consultar/");
+        header("Location: ../cardapio/consultar.php?pag=".$linhas);
 		echo "<script>alert('Erro".$e->getMessage()."')</script>";
         die();
     }

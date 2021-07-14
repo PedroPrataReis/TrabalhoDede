@@ -8,7 +8,6 @@ $telefone_cliente = "";
 $bairro = "";
 $rua = "";
 $numero = "";
-$destino = '';
 $ComandoSQL = "";
 
     try
@@ -36,11 +35,11 @@ $ComandoSQL = "";
         $statement->bindValue(':numero', $numero);
 
         if ($statement->execute()) {
-            header("Location: ../login/consultar/consultar.php?pag=".$re);
+            header("Location: ../login/consultar.php?pag=".$re);
         }
 	} catch (Exception $e) {
         // caso ocorra uma exceção, exibe na tela
-        header("Location: ../login/consultar/consultar.php?pag=".$re);
+        header("Location: ../login/consultar.php?pag=".$re);
 		echo "<script>alert('Erro".$e->getMessage()."')</script>";
         die();
     }

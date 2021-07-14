@@ -62,28 +62,28 @@
             
             <nav>
                 <a href="../../" id="NomeSite">BurgerQueen</a>
-                <a href="../../login/" id="BotaoLogin"><div>Entrar</div></a>
+                <a href="../../login/incluir/" id="BotaoLogin"><div>Entrar</div></a>
             </nav>
                 
                 <div class="DivIncluir">
                     
                     <h1 class="TituloIncluir">Cadastro do Produto</h1>
-                      <form method="POST" action="../../app/inclusao.php" name="form_inclusao">
+                      <form method="POST" action="../../app/inclusao_produto.php" name="form_inclusao">
                         <table class="TabelaIncluir">
                           <tr>
-                            <td class="LabelIncluir">Nome:<span class="Paragrafo">-</span></td>
+                            <td class="LabelIncluir"><label for="nome_produto">Nome:</label><span class="Paragrafo">-</span></td>
                             <td>
                               <input name="nome_produto" type="text" id="nome_produto" size="30" required="required">
                             </td>
                           </tr>
                           <tr>
-                            <td class="LabelIncluir">Preço:<span class="Paragrafo">-</span></td>
+                            <td class="LabelIncluir"><label for="preco_produto">Preço:</label><span class="Paragrafo">-</span></td>
                             <td>
                               <input name="preco_produto" id="preco_produto" type="text"  size="30" required="required">
                             </td>
                           </tr>
                           <tr>
-                            <td class="LabelIncluir">Descrição:<span class="Paragrafo">-</span></td>
+                            <td class="LabelIncluir"><label for="descricao_produto">Descrição:</label><span class="Paragrafo">-</span></td>
                             <td>
                               <input name="descricao_produto" id="descricao_produto" type="text"  size="30"  required="required">
                             </td>

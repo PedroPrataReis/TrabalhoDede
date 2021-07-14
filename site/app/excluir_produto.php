@@ -2,14 +2,14 @@
 
     require_once './conexao.php';
 
-    $id = $_GET['id'];
+    $cd = $_GET['cd'];
     $re = $_GET['re'];
 
-    $comandoSQL = "DELETE FROM tb_cliente WHERE id =". $id;
+    $comandoSQL = "DELETE FROM tb_produto WHERE codigo_produto =". $cd;
 
     $conexao->query($comandoSQL);
 
-    $l = $conexao->query("SELECT id FROM tb_cliente");
+    $l = $conexao->query("SELECT codigo_produto FROM tb_produto");
     $linhas = $l->rowCount();
     $linhas = $linhas + 1;
 
@@ -17,6 +17,6 @@
         $re = $re - 1;
     }
 
-    header("Location: ../login/consultar.php?pag=".$re);
+    header("Location: ../cardapio/consultar.php?pag=".$re);
 
 ?>
