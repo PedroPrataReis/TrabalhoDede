@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 14-Jul-2021 às 03:34
+-- Tempo de geração: 14-Jul-2021 às 17:16
 -- Versão do servidor: 5.7.31
 -- versão do PHP: 7.3.21
 
@@ -37,7 +37,14 @@ CREATE TABLE IF NOT EXISTS `tb_cliente` (
   `rua` varchar(50) NOT NULL,
   `numero` int(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_cliente`
+--
+
+INSERT INTO `tb_cliente` (`id`, `email_cliente`, `nome_cliente`, `telefone_cliente`, `bairro`, `rua`, `numero`) VALUES
+(1, 'joaozinho@gmail.com', 'Joao da Silva', 12341234, 'Bom Jardim', 'Principal', 321);
 
 -- --------------------------------------------------------
 
@@ -52,7 +59,14 @@ CREATE TABLE IF NOT EXISTS `tb_produto` (
   `preco_produto` float NOT NULL,
   `descricao_produto` varchar(300) NOT NULL,
   PRIMARY KEY (`codigo_produto`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_produto`
+--
+
+INSERT INTO `tb_produto` (`codigo_produto`, `nome_produto`, `preco_produto`, `descricao_produto`) VALUES
+(1, 'X burger', 12.99, 'Pão, bife, queijo, maionese, alface e tomate.');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
