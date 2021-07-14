@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 14-Jul-2021 às 17:16
+-- Tempo de geração: 14-Jul-2021 às 17:27
 -- Versão do servidor: 5.7.31
 -- versão do PHP: 7.3.21
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `bd_trabalho`
 --
+CREATE DATABASE IF NOT EXISTS `bd_trabalho` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `bd_trabalho`;
 
 -- --------------------------------------------------------
 
@@ -37,14 +39,19 @@ CREATE TABLE IF NOT EXISTS `tb_cliente` (
   `rua` varchar(50) NOT NULL,
   `numero` int(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `tb_cliente`
 --
 
 INSERT INTO `tb_cliente` (`id`, `email_cliente`, `nome_cliente`, `telefone_cliente`, `bairro`, `rua`, `numero`) VALUES
-(1, 'joaozinho@gmail.com', 'Joao da Silva', 12341234, 'Bom Jardim', 'Principal', 321);
+(2, '123', '2', 3, '4', '5', 6),
+(3, '1', '2', 3, '4', '5', 6),
+(4, '11', '2', 233, '4', '5', 566),
+(5, '11', '22', 33, '4', '45', 66),
+(6, '1', '2', 33, '4444', '556', 778),
+(8, '1', '2', 3, '4', '5', 6);
 
 -- --------------------------------------------------------
 
@@ -59,14 +66,15 @@ CREATE TABLE IF NOT EXISTS `tb_produto` (
   `preco_produto` float NOT NULL,
   `descricao_produto` varchar(300) NOT NULL,
   PRIMARY KEY (`codigo_produto`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `tb_produto`
 --
 
 INSERT INTO `tb_produto` (`codigo_produto`, `nome_produto`, `preco_produto`, `descricao_produto`) VALUES
-(1, 'X burger', 12.99, 'Pão, bife, queijo, maionese, alface e tomate.');
+(2, 'X burger', 12.99, 'Pão, bife, queijo, maionese, alface e tomate.'),
+(3, '1', 2, '3');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
