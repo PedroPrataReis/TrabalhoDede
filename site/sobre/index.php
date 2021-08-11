@@ -2,20 +2,28 @@
 <html lang="pt-br">
 	<head>
         
-		<title>Burger Queen - Cardápio</title>
+		<title>Burger Queen - Sobre Nós</title>
         
 		<meta charset="UTF-8">
         <meta name="author" content="Pedro Prata e José Eduardo">
         
-        <link rel="stylesheet" href="../index.css">
+        <link rel="stylesheet" href="../l/index.css">
         
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
         
-        <script src="../index.js" type="text/javascript"></script>
+        <script src="../l/index.js" type="text/javascript"></script>
         
-        <link rel="icon" href="../imagens/icon.png">
+        <link rel="icon" href="../l/imagens/icon.png">
+
+        <?php
+            @session_start();
+            if(isset($_SESSION['usuario'])) {
+                header("Location: ../l/sobre");
+                exit;
+            } else {}
+        ?>
         
 	</head>
 	<body>    
@@ -39,12 +47,7 @@
                 </td></tr>
                 <tr><td  class="ItemMenu">
                     
-                    <a href="../login/">Entrar</a>
-                    
-                </td></tr>
-                <tr><td  class="ItemMenu">
-                    
-                    <a href="../cardapio/">Cardápio</a>
+                    <a href="../cardapio/consultar.php?pag=0">Cardápio</a>
                     
                 </td></tr>
                 <tr><td  class="ItemMenu">
@@ -62,33 +65,32 @@
             
             <nav>
                 <a href="../" id="NomeSite">BurgerQueen</a>
-                <a href="../login/incluir/" id="BotaoLogin"><div>Entrar</div></a>
+                <a href="../login/" id="BotaoLogin"><div>Entrar</div></a>
             </nav>
                 
-                <div class="DivIC">
+                <div id="TextoSobre">
                     
-                    <h1 class="TituloIC">Cardápio</h1>
+                    <h1 id="TituloSobre">Sobre o Burger Queen</h1>
                     
-                    <a href="incluir/" class="BotaoIC">
-                        <div>Incluir</div>
-                    </a>
-                    <a href="./consultar.php?pag=0" class="BotaoIC">
-                        <div>Consultar</div>
-                    </a>
+                    <span class="Paragrafo">-------</span>O Burger Queen é um estabelecimento fictício, criado pelos alunos Pedro Prata e José Eduardo para fazer o trabalho de Teoria da Programação e Laboratório de Programação do professor Dedé. Como o estabelecimento não existe, as redes socias do Burger Queen também não existem.
+                    
+                    <br><br><span class="Paragrafo">-------</span>Por enquanto o site só possui a homepage, essa página com um texto sobre o site, a página com o cardápio e a página de clientes. Futuramente o site possuirá novas funcionalidades e páginas, além de um sistema de login.
+                    
+                    <br><br><span class="Paragrafo">-------</span>Como o site não existe, esse texto não tem nenhuma utilidade real, servindo puramente para ocupar espaço e possibilitar a existência da página "sobre nós", deixando o site com uma aparência mais completa.
                     
                 </div>
                 
-            <footer  class="FooterSemConteudo">
+            <footer>
                 <span id="TextoFooter">© Burger Queen 2021</span>
                 <div id="Redes">
                     <a href="../sobre/" class="LinkSocial">
-                        <img src="../imagens/twitter.png" class="Social">
+                        <img src="../l/imagens/twitter.png" class="Social">
                     </a>
                     <a href="../sobre/" class="LinkSocial">
-                        <img src="../imagens/facebook.png" class="Social">
+                        <img src="../l/imagens/facebook.png" class="Social">
                     </a>
                     <a href="../sobre/" class="LinkSocial">
-                        <img src="../imagens/intagram.png" class="Social">
+                        <img src="../l/imagens/intagram.png" class="Social">
                     </a>
                 </div>
             </footer>

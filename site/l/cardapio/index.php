@@ -2,7 +2,7 @@
 <html lang="pt-br">
 	<head>
         
-		<title>Burger Queen - Login</title>
+		<title>Burger Queen - Cardápio</title>
         
 		<meta charset="UTF-8">
         <meta name="author" content="Pedro Prata e José Eduardo">
@@ -16,6 +16,14 @@
         <script src="../index.js" type="text/javascript"></script>
         
         <link rel="icon" href="../imagens/icon.png">
+        
+        <?php
+            @session_start();
+            if(isset($_SESSION['usuario'])) {} else {
+                header("Location: ../../login/erro.php");
+                exit;
+            }
+        ?>
         
 	</head>
 	<body>    
@@ -39,12 +47,17 @@
                 </td></tr>
                 <tr><td  class="ItemMenu">
                     
-                    <a href="../login/">Entrar</a>
+                    <a href="../clientes/">Clientes</a>
                     
                 </td></tr>
                 <tr><td  class="ItemMenu">
                     
                     <a href="../cardapio/">Cardápio</a>
+                    
+                </td></tr>
+                <tr><td  class="ItemMenu">
+                    
+                    <a href="../cadastrar/">Cadastrar</a>
                     
                 </td></tr>
                 <tr><td  class="ItemMenu">
@@ -62,12 +75,12 @@
             
             <nav>
                 <a href="../" id="NomeSite">BurgerQueen</a>
-                <a href="../login/incluir/" id="BotaoLogin"><div>Entrar</div></a>
+                <a href="../app/logout.php" id="BotaoLogin"><div>Sair</div></a>
             </nav>
                 
                 <div class="DivIC">
                     
-                    <h1 class="TituloIC">Clientes</h1>
+                    <h1 class="TituloIC">Cardápio</h1>
                     
                     <a href="incluir/" class="BotaoIC">
                         <div>Incluir</div>
@@ -78,7 +91,7 @@
                     
                 </div>
                 
-            <footer class="FooterSemConteudo">
+            <footer  class="FooterSemConteudo">
                 <span id="TextoFooter">© Burger Queen 2021</span>
                 <div id="Redes">
                     <a href="../sobre/" class="LinkSocial">
@@ -96,6 +109,8 @@
         
     </tr>
     </table>
+        
+	    <img src="../imagens/logado.png" id="logado">
         
 	</body>
 </html>

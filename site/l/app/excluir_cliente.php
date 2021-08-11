@@ -17,6 +17,6 @@
         $re = $re - 1;
     }
 
-    header("Location: ../login/consultar.php?pag=".$re);
+    header("Location: ../clientes/consultar.php?pag=".$re);
 
 ?>

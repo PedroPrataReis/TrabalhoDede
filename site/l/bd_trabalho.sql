@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 14-Jul-2021 às 17:35
+-- Tempo de geração: 11-Ago-2021 às 07:41
 -- Versão do servidor: 5.7.31
 -- versão do PHP: 7.3.21
 
@@ -52,6 +52,29 @@ INSERT INTO `tb_cliente` (`id`, `email_cliente`, `nome_cliente`, `telefone_clien
 (12, 'carlinhos@gmail.com', 'carlos nogueira', 29434753, 'bom pastor', 'independencia', 3094),
 (13, 'joao@gmail.com', 'joao pedro', 39583044, 'centro', 'rio branco', 3494),
 (14, 'dede@gmail.com', 'dede', 39482943, 'sao pedro', 'jose da silva', 2049);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tb_login`
+--
+
+DROP TABLE IF EXISTS `tb_login`;
+CREATE TABLE IF NOT EXISTS `tb_login` (
+  `usuario` varchar(255) NOT NULL,
+  `senha` varchar(255) NOT NULL,
+  PRIMARY KEY (`usuario`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_login`
+--
+
+INSERT INTO `tb_login` (`usuario`, `senha`) VALUES
+('dede', '12345'),
+('jose', '12345'),
+('pedro', '12345'),
+('admin', 'admin');
 
 -- --------------------------------------------------------
 

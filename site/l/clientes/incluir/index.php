@@ -2,7 +2,7 @@
 <html lang="pt-br">
 	<head>
         
-		<title>Burger Queen - Cardápio | Incluir</title>
+		<title>Burger Queen - Clientes | Incluir</title>
         
 		<meta charset="UTF-8">
         <meta name="author" content="Pedro Prata e José Eduardo">
@@ -16,6 +16,14 @@
         <script src="../../index.js" type="text/javascript"></script>
         
         <link rel="icon" href="../../imagens/icon.png">
+        
+        <?php
+            @session_start();
+            if(isset($_SESSION['usuario'])) {} else {
+                header("Location: ../../../login/erro.php");
+                exit;
+            }
+        ?>
         
 	</head>
 	<body>    
@@ -39,12 +47,17 @@
                 </td></tr>
                 <tr><td  class="ItemMenu">
                     
-                    <a href="../../login/">Entrar</a>
+                    <a href="../../clientes/">Clientes</a>
                     
                 </td></tr>
                 <tr><td  class="ItemMenu">
                     
                     <a href="../../cardapio/">Cardápio</a>
+                    
+                </td></tr>
+                <tr><td  class="ItemMenu">
+                    
+                    <a href="../../cadastrar/">Cadastrar</a>
                     
                 </td></tr>
                 <tr><td  class="ItemMenu">
@@ -62,36 +75,54 @@
             
             <nav>
                 <a href="../../" id="NomeSite">BurgerQueen</a>
-                <a href="../../login/incluir/" id="BotaoLogin"><div>Entrar</div></a>
+                <a href="../../app/logout.php" id="BotaoLogin"><div>Sair</div></a>
             </nav>
                 
                 <div class="DivIncluir">
                     
-                    <h1 class="TituloIncluir">Cadastro do Produto</h1>
-                      <form method="POST" action="../../app/inclusao_produto.php" name="form_inclusao">
+                    <h1 class="TituloIncluir">Cadastro do Cliente</h1>
+                      <form method="POST" action="../../app/inclusao_cliente.php" name="form_inclusao">
                         <table class="TabelaIncluir">
                           <tr>
-                            <td class="LabelIncluir"><label for="nome_produto">Nome:</label><span class="Paragrafo">-</span></td>
+                            <td class="LabelIncluir"><label for="email_cliente">Email:</label><span class="Paragrafo">-</span></td>
                             <td>
-                              <input name="nome_produto" type="text" id="nome_produto" size="30" required="required">
+                              <input name="email_cliente" type="text" id="email_cliente" size="30" required="required">
                             </td>
                           </tr>
                           <tr>
-                            <td class="LabelIncluir"><label for="preco_produto">Preço:</label><span class="Paragrafo">-</span></td>
+                            <td class="LabelIncluir"><label for="nome_cliente">Nome:</label><span class="Paragrafo">-</span></td>
                             <td>
-                              <input name="preco_produto" id="preco_produto" type="text"  size="30" required="required">
+                              <input name="nome_cliente" type="text" id="nome_cliente" size="30" required="required">
                             </td>
                           </tr>
                           <tr>
-                            <td class="LabelIncluir"><label for="descricao_produto">Descrição:</label><span class="Paragrafo">-</span></td>
+                            <td class="LabelIncluir"><label for="telefone_cliente">Telefone:</label><span class="Paragrafo">-</span></td>
                             <td>
-                              <input name="descricao_produto" id="descricao_produto" type="text"  size="30"  required="required">
+                              <input type="text" name="telefone_cliente" id="telefone_cliente" size="30"  required="required">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="LabelIncluir"><label for="bairro">Bairro:</label><span class="Paragrafo">-</span></td>
+                            <td>
+                              <input type="text" name="bairro" id="bairro"  size="30"  required="required">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="LabelIncluir"><label for="rua">Rua:</label><span class="Paragrafo">-</span></td>
+                            <td>
+                              <input type="text" name="rua" id="rua"  size="30" required="required">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="LabelIncluir"><label for="numero">Número:</label><span class="Paragrafo">-</span></td>
+                            <td>
+                              <input type="text" name="numero" id="numero"  size="30"  required="required">
                             </td>
                           </tr>
                           <tr>
                             <td colspan='2'>
                                 <br />
-                                <input type="hidden" name="form_operacao" value="inclusao_produto">
+                                <input type="hidden" name="form_operacao" value="inclusao_cliente">
                                 <input type="submit" name="enviar" value="Enviar">
                             </td>
                           </tr>
@@ -118,6 +149,8 @@
         
     </tr>
     </table>
+        
+	    <img src="../../imagens/logado.png" id="logado">
         
 	</body>
 </html>
