@@ -2,7 +2,7 @@
 <html lang="pt-br">
 	<head>
         
-		<title>Burger Queen - Sobre Nós</title>
+		<title>Burger Queen - Entrar</title>
         
 		<meta charset="UTF-8">
         <meta name="author" content="Pedro Prata e José Eduardo">
@@ -20,7 +20,7 @@
         <?php
             @session_start();
             if(isset($_SESSION['usuario'])) {
-                header("Location: ../l/sobre");
+                header("Location: ../l/cadastrar/");
                 exit;
             } else {}
         ?>
@@ -73,19 +73,47 @@
                 <a href="../login/" id="BotaoLogin"><div>Entrar</div></a>
             </nav>
                 
-                <div id="TextoSobre">
-                    
-                    <h1 id="TituloSobre">Sobre o Burger Queen</h1>
-                    
-                    <span class="Paragrafo">-------</span>O Burger Queen é um estabelecimento fictício, criado pelos alunos Pedro Prata e José Eduardo para fazer o trabalho de Teoria da Programação e Laboratório de Programação do professor Dedé. Como o estabelecimento não existe, as redes socias do Burger Queen também não existem.
-                    
-                    <br><br><span class="Paragrafo">-------</span>Por enquanto o site só possui a homepage, essa página com um texto sobre o site, a página com o cardápio e a página de clientes. Futuramente o site possuirá novas funcionalidades e páginas, além de um sistema de login.
-                    
-                    <br><br><span class="Paragrafo">-------</span>Como o site não existe, esse texto não tem nenhuma utilidade real, servindo puramente para ocupar espaço e possibilitar a existência da página "sobre nós", deixando o site com uma aparência mais completa.
-                    
+            <div class="DivIncluir">
+
+                <h1 class="TituloIncluir">Cadastrar Usuário</h1>
+                <form method="POST" action="../l/app/cadastro_login.php" name="form_cadastro">
+                    <table class="TabelaIncluir">
+                        <tr>
+                            <td class="LabelIncluir">
+                                <label for="usuario">
+                                    Usuário:
+                                </label><span class="Paragrafo">-</span>
+                            </td>
+
+                            <td>
+                                <input type="text" name="usuario" id="usuario" required="required">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="LabelIncluir">
+                                <label for="senha">
+                                    Senha:
+                                </label><span class="Paragrafo">-</span>
+                            </td>
+
+                            <td>
+                                <input type="password" name="senha" id="senha" required="required">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <br>
+                                <input type="hidden" name="form_cadastro" value="cadastrar">
+                                <input type="hidden" name="l" value="nl">
+                                <input type="submit" value="Cadastrar">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+
                 </div>
                 
-            <footer>
+            <footer class="FooterSemConteudo">
                 <span id="TextoFooter">© Burger Queen 2021</span>
                 <div id="Redes">
                     <a href="../sobre/" class="LinkSocial">

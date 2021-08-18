@@ -109,6 +109,7 @@
                             <td colspan="2">
                                 <br>
                                 <input type="hidden" name="form_cadastro" value="cadastrar">
+                                <input type="hidden" name="l" value="l">
                                 <input type="submit" value="Cadastrar">
                             </td>
                         </tr>
@@ -136,9 +137,7 @@
     </tr>
     </table>
         
-	    <a href="http://localhost/phpmyadmin/" target="_blank">
-            <img src="../imagens/logado.png" id="logado">
-        </a>
+        <img src="../imagens/logado.png" id="logado">
 
 	</body>
 </html>

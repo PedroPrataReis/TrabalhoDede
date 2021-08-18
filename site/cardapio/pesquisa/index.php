@@ -52,6 +52,11 @@
                 </td></tr>
                 <tr><td  class="ItemMenu">
                     
+                    <a href="../../cadastrar/">Cadastrar</a>
+                    
+                </td></tr>
+                <tr><td  class="ItemMenu">
+                    
                     <a href="../../sobre/">Sobre nós</a>
                     
                 </td></tr>

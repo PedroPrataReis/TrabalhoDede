@@ -20,8 +20,8 @@
         <?php
             @session_start();
             if(isset($_SESSION['usuario'])) {
-                header("Location: ../l/");
-                exit;
+	            $_SESSION = array();
+	            session_destroy();
             } else {}
         ?>
         
@@ -48,6 +48,11 @@
                 <tr><td  class="ItemMenu">
                     
                     <a href="../cardapio/consultar.php?pag=0">Cardápio</a>
+                    
+                </td></tr>
+                <tr><td  class="ItemMenu">
+                    
+                    <a href="../cadastrar/">Cadastrar</a>
                     
                 </td></tr>
                 <tr><td  class="ItemMenu">

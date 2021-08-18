@@ -4,6 +4,7 @@
 //
 $usuario = '';
 $senha = '';
+$l = '';
 // Só entrará neste bloco do IF após o envio pelo formulário - o campo form_operação será criado no formulário abaixo
 
 if ($_POST['form_cadastro'] == "cadastrar") 
@@ -16,6 +17,7 @@ if ($_POST['form_cadastro'] == "cadastrar")
 // recebe os dados do formulário
         $usuario = $_POST['usuario'];
         $senha = $_POST['senha'];
+        $l = $_POST['l'];
 // verifica se já existe um registro na tabela para o código informado (chave duplicada)		
 		$statement = $conexao->prepare('INSERT INTO tb_login(usuario, senha) VALUES
 		(:usuario, :senha)');
@@ -24,7 +26,14 @@ if ($_POST['form_cadastro'] == "cadastrar")
         $statement->bindValue(':senha', $senha);
 
         if ($statement->execute()) {
-            header("Location: ../");
+            if($l=='l'){
+                header("Location: ../");
+            }elseif ($l=='nl') {
+                header("Location: ../../");
+            }else{
+                header("Location: ../../login/erro.php");
+            }
+            
         }
 	} catch (Exception $e) {
         // caso ocorra uma exceção, exibe na tela
