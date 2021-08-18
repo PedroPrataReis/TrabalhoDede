@@ -2,7 +2,7 @@
 <html lang="pt-br">
 	<head>
         
-		<title>Burger Queen - Clientes</title>
+		<title>Burger Queen - Cadastrar</title>
         
 		<meta charset="UTF-8">
         <meta name="author" content="Pedro Prata e José Eduardo">
@@ -16,7 +16,7 @@
         <script src="../index.js" type="text/javascript"></script>
         
         <link rel="icon" href="../imagens/icon.png">
-
+        
         <?php
             @session_start();
             if(isset($_SESSION['usuario'])) {} else {
@@ -30,7 +30,7 @@
     <table>
     <tr>
         
-    <td id="ContMenu">
+        <td id="ContMenu">
             <table id="TabelaMenu">
                 <thead>
                 <tr><th id="NomeMenu">
@@ -78,20 +78,17 @@
                 <a href="../app/logout.php" id="BotaoLogin"><div>Sair</div></a>
             </nav>
                 
-                <div class="DivIC">
+            <div class="DivIC">
+
+            <h1 class="TituloIC">Cadastro Concluido</h1>
                     
-                    <h1 class="TituloIC">Clientes</h1>
-                    
-                    <a href="incluir/" class="BotaoIC">
-                        <div>Incluir</div>
+                    <a href="./" class="BotaoIC">
+                        <div>Cadastrar novo usuário</div>
                     </a>
-                    <a href="./consultar.php?pag=0" class="BotaoIC">
-                        <div>Consultar</div>
-                    </a>
-                    
-                </div>
+
+            </div>
                 
-            <footer class="FooterSemConteudo">
+            <footer  class="FooterSemConteudo">
                 <span id="TextoFooter">© Burger Queen 2021</span>
                 <div id="Redes">
                     <a href="../sobre/" class="LinkSocial">
@@ -110,11 +107,11 @@
     </tr>
     </table>
         
-	    <img src="../imagens/logado.png" id="logado">
+        <img src="../imagens/logado.png" id="logado">
         <?php
             $user = $_SESSION['usuario'];
             echo "<span id='user'>$user</span>";
         ?>
-        
+
 	</body>
 </html>

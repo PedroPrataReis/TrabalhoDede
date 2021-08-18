@@ -2,7 +2,7 @@
 <html lang="pt-br">
 	<head>
         
-		<title>Burger Queen - Entrar</title>
+		<title>Burger Queen - Cadastrar</title>
         
 		<meta charset="UTF-8">
         <meta name="author" content="Pedro Prata e José Eduardo">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 18-Ago-2021 às 01:30
+-- Tempo de geração: 18-Ago-2021 às 03:31
 -- Versão do servidor: 5.7.31
 -- versão do PHP: 7.3.21
 
@@ -71,9 +71,6 @@ CREATE TABLE IF NOT EXISTS `tb_login` (
 --
 
 INSERT INTO `tb_login` (`usuario`, `senha`) VALUES
-('dede', '12345'),
-('jose', '12345'),
-('pedro', '12345'),
 ('admin', 'admin');
 
 -- --------------------------------------------------------

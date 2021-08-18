@@ -27,9 +27,9 @@ if ($_POST['form_cadastro'] == "cadastrar")
 
         if ($statement->execute()) {
             if($l=='l'){
-                header("Location: ../");
+                header("Location: ../cadastrar/concluido.php");
             }elseif ($l=='nl') {
-                header("Location: ../../");
+                header("Location: ../../cadastrar/concluido.php");
             }else{
                 header("Location: ../../login/erro.php");
             }

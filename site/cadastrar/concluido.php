@@ -2,27 +2,27 @@
 <html lang="pt-br">
 	<head>
         
-		<title>Burger Queen - Clientes</title>
+		<title>Burger Queen - Cadastrar</title>
         
 		<meta charset="UTF-8">
         <meta name="author" content="Pedro Prata e José Eduardo">
         
-        <link rel="stylesheet" href="../index.css">
+        <link rel="stylesheet" href="../l/index.css">
         
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
         
-        <script src="../index.js" type="text/javascript"></script>
+        <script src="../l/index.js" type="text/javascript"></script>
         
-        <link rel="icon" href="../imagens/icon.png">
+        <link rel="icon" href="../l/imagens/icon.png">
 
         <?php
             @session_start();
-            if(isset($_SESSION['usuario'])) {} else {
-                header("Location: ../../login/erro.php");
+            if(isset($_SESSION['usuario'])) {
+                header("Location: ../l/cadastrar/");
                 exit;
-            }
+            } else {}
         ?>
         
 	</head>
@@ -30,7 +30,7 @@
     <table>
     <tr>
         
-    <td id="ContMenu">
+        <td id="ContMenu">
             <table id="TabelaMenu">
                 <thead>
                 <tr><th id="NomeMenu">
@@ -47,12 +47,7 @@
                 </td></tr>
                 <tr><td  class="ItemMenu">
                     
-                    <a href="../clientes/">Clientes</a>
-                    
-                </td></tr>
-                <tr><td  class="ItemMenu">
-                    
-                    <a href="../cardapio/">Cardápio</a>
+                    <a href="../cardapio/consultar.php?pag=0">Cardápio</a>
                     
                 </td></tr>
                 <tr><td  class="ItemMenu">
@@ -75,33 +70,30 @@
             
             <nav>
                 <a href="../" id="NomeSite">BurgerQueen</a>
-                <a href="../app/logout.php" id="BotaoLogin"><div>Sair</div></a>
+                <a href="../login/" id="BotaoLogin"><div>Entrar</div></a>
             </nav>
                 
-                <div class="DivIC">
+            <div class="DivIC">
+
+            <h1 class="TituloIC">Cadastro Concluido</h1>
                     
-                    <h1 class="TituloIC">Clientes</h1>
-                    
-                    <a href="incluir/" class="BotaoIC">
-                        <div>Incluir</div>
+                    <a href="./" class="BotaoIC">
+                        <div>Cadastrar novo usuário</div>
                     </a>
-                    <a href="./consultar.php?pag=0" class="BotaoIC">
-                        <div>Consultar</div>
-                    </a>
-                    
-                </div>
+
+            </div>
                 
             <footer class="FooterSemConteudo">
                 <span id="TextoFooter">© Burger Queen 2021</span>
                 <div id="Redes">
                     <a href="../sobre/" class="LinkSocial">
-                        <img src="../imagens/twitter.png" class="Social">
+                        <img src="../l/imagens/twitter.png" class="Social">
                     </a>
                     <a href="../sobre/" class="LinkSocial">
-                        <img src="../imagens/facebook.png" class="Social">
+                        <img src="../l/imagens/facebook.png" class="Social">
                     </a>
                     <a href="../sobre/" class="LinkSocial">
-                        <img src="../imagens/intagram.png" class="Social">
+                        <img src="../l/imagens/intagram.png" class="Social">
                     </a>
                 </div>
             </footer>
@@ -109,12 +101,6 @@
         
     </tr>
     </table>
-        
-	    <img src="../imagens/logado.png" id="logado">
-        <?php
-            $user = $_SESSION['usuario'];
-            echo "<span id='user'>$user</span>";
-        ?>
         
 	</body>
 </html>

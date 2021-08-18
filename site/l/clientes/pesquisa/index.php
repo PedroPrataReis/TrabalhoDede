@@ -210,6 +210,10 @@
     </table>
         
 	    <img src="../../imagens/logado.png" id="logado">
+        <?php
+            $user = $_SESSION['usuario'];
+            echo "<span id='user'>$user</span>";
+        ?>
         
 	</body>
 </html>
