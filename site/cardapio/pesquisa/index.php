@@ -19,7 +19,7 @@
 
         <?php
             @session_start();
-            if(isset($_SESSION['usuario'])) {
+            if(isset($_SESSION['usuario']) && $_SESSION['nivel'] == 1) {
                 header("Location: ../../l/cardapio/consultar.php?pag=0");
                 exit;
             } else {}
@@ -50,11 +50,13 @@
                     <a href="../../cardapio/">Cardápio</a>
                     
                 </td></tr>
+                <?php
+                if(isset($_SESSION['usuario'])) {}else{echo'
                 <tr><td  class="ItemMenu">
                     
-                    <a href="../../cadastrar/">Cadastrar</a>
+                    <a href="../../cadastrar/">Cadastrar-se</a>
                     
-                </td></tr>
+                </td></tr>';}?>
                 <tr><td  class="ItemMenu">
                     
                     <a href="../../sobre/">Sobre nós</a>
@@ -70,16 +72,25 @@
             
             <nav>
                 <a href="../../" id="NomeSite">BurgerQueen</a>
-                <a href="../../login/" id="BotaoLogin"><div>Entrar</div></a>
+                <?php
+                    if(isset($_SESSION['usuario'])){
+                        echo'<a href="../../l/app/logout.php" id="BotaoLogin"><div>Sair</div></a>';
+                    }else{
+                        echo'<a href="../../login/" id="BotaoLogin"><div>Entrar</div></a>';
+                    }
+                ?>
             </nav>
                 
             <div class="DivIncluir">
 
             <?php
-                require_once '../../l/app/conexao.php';
+                try{
+                include '../../l/app/sql_injection.php';
 
-                $pesquisa = $_POST['pesquisa'];
-                $campo = $_POST['campo'];
+                $pesquisa = limpar($_POST['pesquisa'],true);
+                $campo = limpar($_POST['campo']);
+
+                require_once '../../l/app/conexao.php';
                 
                 $ComandoSQL='';
                 $result='';
@@ -151,7 +162,11 @@
                 echo"</table>";
 
                 echo"<br><br><a href='../consultar.php?pag=0' id='botao'>Voltar</a>";
-
+                } catch (Exception $e) {
+                    // caso ocorra uma exceção, exibe na tela
+                    header("Location: ../../erro.php");
+                    die();
+                }
             ?>
 
             </div>
@@ -174,6 +189,18 @@
         
     </tr>
     </table>
-        
+        <?php
+            //mostrar login
+            if(isset($_SESSION['usuario'])) {
+                echo"<img src='../../l/imagens/logado.png' id='logado'>";
+                $user = $_SESSION['usuario'];
+                if ($_SESSION['nivel'] == 1){
+                    $nivel = "Funcionario";
+                }else{
+                    $nivel = "Cliente";
+                }
+                echo "<span id='user'>$user | $nivel</span>";
+            }
+        ?>
 	</body>
 </html>

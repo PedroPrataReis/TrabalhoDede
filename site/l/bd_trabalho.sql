@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 18-Ago-2021 às 03:31
+-- Tempo de geração: 15-Set-2021 às 09:12
 -- Versão do servidor: 5.7.31
 -- versão do PHP: 7.3.21
 
@@ -50,8 +50,7 @@ INSERT INTO `tb_cliente` (`id`, `email_cliente`, `nome_cliente`, `telefone_clien
 (9, 'jose@yahoo.com', 'jose oliveira', 12345678, 'bom jardim', 'principal', 321),
 (11, 'joaozinho@gmail.com', 'Joao Silveira', 67452479, 'linhares', 'de cima', 528),
 (12, 'carlinhos@gmail.com', 'carlos nogueira', 29434753, 'bom pastor', 'independencia', 3094),
-(13, 'joao@gmail.com', 'joao pedro', 39583044, 'centro', 'rio branco', 3494),
-(14, 'dede@gmail.com', 'dede', 39482943, 'sao pedro', 'jose da silva', 2049);
+(13, 'joao@gmail.com', 'joao pedro', 39583044, 'centro', 'rio branco', 3494);
 
 -- --------------------------------------------------------
 
@@ -63,6 +62,7 @@ DROP TABLE IF EXISTS `tb_login`;
 CREATE TABLE IF NOT EXISTS `tb_login` (
   `usuario` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
+  `nivel` int(1) NOT NULL,
   PRIMARY KEY (`usuario`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -70,8 +70,8 @@ CREATE TABLE IF NOT EXISTS `tb_login` (
 -- Extraindo dados da tabela `tb_login`
 --
 
-INSERT INTO `tb_login` (`usuario`, `senha`) VALUES
-('admin', 'admin');
+INSERT INTO `tb_login` (`usuario`, `senha`, `nivel`) VALUES
+('admin', '21232f297a57a5a743894a0e4a801fc3', 1);
 
 -- --------------------------------------------------------
 
@@ -93,12 +93,12 @@ CREATE TABLE IF NOT EXISTS `tb_produto` (
 --
 
 INSERT INTO `tb_produto` (`codigo_produto`, `nome_produto`, `preco_produto`, `descricao_produto`) VALUES
-(4, 'X burger', 12.99, 'Pão, bife, queijo, maionese, alface e tomate.'),
-(5, 'X egg', 13.99, 'Pão, bife, queijo, ovo, maionese, alface e tomate.'),
-(6, 'X egg bacon', 14.99, 'Pão, bife, queijo, ovo, bacon, maionese, alface e tomate.'),
-(7, 'Hamburger', 9.99, 'Pão, bife, maionese, alface e tomate.'),
-(8, 'X salada', 12.99, 'Pão, queijo, maionese, alface e tomate.'),
-(9, 'X tudo', 15.99, 'Pão, dois bifes, queijo, ovo, bacon, maionese, mostarda, batata palha, alface e tomate.');
+(4, 'X burger', 12.99, 'Po bife queijo maionese alface e tomate'),
+(5, 'X egg', 13.99, 'Po bife queijo ovo maionese alface e tomate'),
+(6, 'X egg bacon', 14.99, 'Po bife queijo ovo bacon maionese alface e tomate'),
+(7, 'Hamburger', 9.99, 'Po bife maionese alface e tomate'),
+(8, 'X salada', 12.99, 'Po queijo maionese alface e tomate'),
+(9, 'X tudo', 15.99, 'Po dois bifes queijo ovo bacon maionese mostarda batata palha alface e tomate');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

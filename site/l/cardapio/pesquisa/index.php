@@ -19,7 +19,7 @@
         
         <?php
             @session_start();
-            if(isset($_SESSION['usuario'])) {} else {
+            if(isset($_SESSION['usuario']) && $_SESSION['nivel'] == 1) {} else {
                 header("Location: ../../../login/erro.php");
                 exit;
             }
@@ -57,7 +57,7 @@
                 </td></tr>
                 <tr><td  class="ItemMenu">
                     
-                    <a href="../../cadastrar/">Cadastrar</a>
+                    <a href="../../cadastrar/">Usuários</a>
                     
                 </td></tr>
                 <tr><td  class="ItemMenu">
@@ -81,14 +81,17 @@
             <div class="DivIncluir">
 
             <?php
-                require_once '../../app/conexao.php';
+                try{
 
-                $pesquisa = $_POST['pesquisa'];
-                $campo = $_POST['campo'];
+                include '../../app/sql_injection.php';
+
+                $pesquisa = limpar($_POST['pesquisa'],true);
+                $campo = limpar($_POST['campo']);
                 
                 $ComandoSQL='';
                 $result='';
                 
+                require_once '../../app/conexao.php';
 
                 switch ($campo) {                    
                     case 'nome':
@@ -160,7 +163,11 @@
                 echo"</table>";
 
                 echo"<br><br><a href='../consultar.php?pag=0' id='botao'>Voltar</a>";
-
+                } catch (Exception $e) {
+                    // caso ocorra uma exceção, exibe na tela
+                    header("Location: ../../../erro.php");
+                    die();
+                }
             ?>
 
             </div>
@@ -183,12 +190,18 @@
         
     </tr>
     </table>
-        
-	    <img src="../../imagens/logado.png" id="logado">
         <?php
-            $user = $_SESSION['usuario'];
-            echo "<span id='user'>$user</span>";
+            //mostrar login
+            if(isset($_SESSION['usuario'])) {
+                echo"<img src='../../imagens/logado.png' id='logado'>";
+                $user = $_SESSION['usuario'];
+                if ($_SESSION['nivel'] == 1){
+                    $nivel = "Funcionario";
+                }else{
+                    $nivel = "Cliente";
+                }
+                echo "<span id='user'>$user | $nivel</span>";
+            }
         ?>
-        
 	</body>
 </html>

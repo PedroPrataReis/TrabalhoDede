@@ -2,7 +2,7 @@
 <html lang="pt-br">
 	<head>
         
-		<title>Burger Queen - Clientes | Incluir</title>
+		<title>Burger Queen - Usuários | Alterar</title>
         
 		<meta charset="UTF-8">
         <meta name="author" content="Pedro Prata e José Eduardo">
@@ -78,58 +78,62 @@
                 <a href="../../app/logout.php" id="BotaoLogin"><div>Sair</div></a>
             </nav>
                 
-                <div class="DivIncluir">
+            <div class="DivIncluir">
+
+            <?php
+                include '../../app/sql_injection.php';
+
+                $cd = limpar($_GET['cd']);
+                $re = limpar($_GET['re']);
+
+                require_once '../../app/conexao.php';
                     
-                    <h1 class="TituloIncluir">Cadastro do Cliente</h1>
-                      <form method="POST" action="../../app/inclusao_cliente.php" name="form_inclusao">
-                        <table class="TabelaIncluir">
-                          <tr>
-                            <td class="LabelIncluir"><label for="email_cliente">Email:</label><span class="Paragrafo">-</span></td>
-                            <td>
-                              <input name="email_cliente" type="text" id="email_cliente" size="30" required="required">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelIncluir"><label for="nome_cliente">Nome:</label><span class="Paragrafo">-</span></td>
-                            <td>
-                              <input name="nome_cliente" type="text" id="nome_cliente" size="30" required="required">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelIncluir"><label for="telefone_cliente">Telefone:</label><span class="Paragrafo">-</span></td>
-                            <td>
-                              <input type="text" name="telefone_cliente" id="telefone_cliente" size="30"  required="required">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelIncluir"><label for="bairro">Bairro:</label><span class="Paragrafo">-</span></td>
-                            <td>
-                              <input type="text" name="bairro" id="bairro"  size="30"  required="required">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelIncluir"><label for="rua">Rua:</label><span class="Paragrafo">-</span></td>
-                            <td>
-                              <input type="text" name="rua" id="rua"  size="30" required="required">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelIncluir"><label for="numero">Número:</label><span class="Paragrafo">-</span></td>
-                            <td>
-                              <input type="text" name="numero" id="numero"  size="30"  required="required">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td colspan='2'>
-                                <br />
-                                <input type="hidden" name="form_operacao" value="inclusao_cliente">
-                                <input type="submit" name="enviar" value="Enviar">
-                            </td>
-                          </tr>
-                          </table>
-                      </form>
-                    
-                </div>
+                $ComandoSQL = "SELECT * FROM tb_login WHERE usuario ='". $cd."'";
+
+                $u=$conexao->query($ComandoSQL);
+
+                while($row = $u->fetch(PDO::FETCH_OBJ)){
+
+                echo'
+                    <h1 class="TituloIncluir">Alteração Usuários</h1>
+                    <form method="POST" action="../../app/alteracao_login.php">
+                    <input type="hidden" name="usuario" value="'.$row->usuario.'">
+                    <input type="hidden" name="re" value="'.$re.'">
+                    <table class="TabelaIncluir">
+                        <tr>
+                        <td class="LabelIncluir"><label for="usuario">Usuario:</label><span class="Paragrafo">-</span></td>
+                        <td>
+                            <input name="usuario" type="text" id="usuario" size="30" required="required" value="'.$row->usuario.'">
+                        </td>
+                        </tr>
+                        <tr>
+                        <td class="LabelIncluir"><label for="senha">Senha:</label><span class="Paragrafo">-</span></td>
+                        <td>
+                            <input type="password" name="senha" id="senha" size="30"  required="required">
+                        </td>
+                        </tr>
+                        <tr>
+                        <td class="LabelIncluir"><label>Tipo:</label><span class="Paragrafo">-</span></td>
+                        <td>
+                            <input type="radio" name="nivel" id="nivel" required="required" value="0"> Cliente 
+                            <span class="Paragrafo">-</span>
+                            <input type="radio" name="nivel" id="nivel" required="required" value="1"> Funcionário 
+                        </td>
+                        </tr>
+                        
+                        <td colspan="2">
+                            <br>
+                            <input type="hidden" name="usuario_antigo" value="'.$row->usuario.'">
+                            <input type="submit" name="enviar" value="Alterar">
+                        </td>
+                        </tr>
+                    </table>
+                    </form>
+                ';
+                }
+            ?>
+
+            </div>
                 
             <footer class="FooterSemConteudo">
                 <span id="TextoFooter">© Burger Queen 2021</span>

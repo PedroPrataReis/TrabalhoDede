@@ -2,27 +2,27 @@
 <html lang="pt-br">
 	<head>
         
-		<title>Burger Queen - Usuários</title>
+		<title>Burger Queen - Erro</title>
         
 		<meta charset="UTF-8">
         <meta name="author" content="Pedro Prata e José Eduardo">
         
-        <link rel="stylesheet" href="../index.css">
+        <link rel="stylesheet" href="l/index.css">
         
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
         
-        <script src="../index.js" type="text/javascript"></script>
+        <script src="l/index.js" type="text/javascript"></script>
         
-        <link rel="icon" href="../imagens/icon.png">
-        
+        <link rel="icon" href="l/imagens/icon.png">
+
         <?php
             @session_start();
-            if(isset($_SESSION['usuario']) && $_SESSION['nivel'] == 1) {} else {
-                header("Location: ../../login/erro.php");
-                exit;
-            }
+            if(isset($_SESSION['usuario'])) {
+	            $_SESSION = array();
+	            session_destroy();
+            } else {}
         ?>
         
 	</head>
@@ -35,34 +35,31 @@
                 <thead>
                 <tr><th id="NomeMenu">
                     
-                    <a href="../">BurgerQueen</a>
+                    <a href="./">BurgerQueen</a>
                     
                 </th></tr>
                 </thead>
                 <tbody>
                 <tr><td  class="ItemMenu">
                     
-                    <a href="../">Home</a>
+                    <a href="./">Home</a>
                     
                 </td></tr>
                 <tr><td  class="ItemMenu">
                     
-                    <a href="../clientes/">Clientes</a>
+                    <a href="cardapio/consultar.php?pag=0">Cardápio</a>
                     
                 </td></tr>
+                <?php
+                if(isset($_SESSION['usuario'])) {}else{echo'
                 <tr><td  class="ItemMenu">
                     
-                    <a href="../cardapio/">Cardápio</a>
+                    <a href="cadastrar/">Cadastrar-se</a>
                     
-                </td></tr>
+                </td></tr>';}?>
                 <tr><td  class="ItemMenu">
                     
-                    <a href="../cadastrar/">Usuários</a>
-                    
-                </td></tr>
-                <tr><td  class="ItemMenu">
-                    
-                    <a href="../sobre/">Sobre nós</a>
+                    <a href="sobre/">Sobre nós</a>
                     
                 </td></tr>
                 </tbody>
@@ -74,34 +71,33 @@
         <td id="ContSite">
             
             <nav>
-                <a href="../" id="NomeSite">BurgerQueen</a>
-                <a href="../app/logout.php" id="BotaoLogin"><div>Sair</div></a>
+                <a href="./" id="NomeSite">BurgerQueen</a>
+                <?php
+                    if(isset($_SESSION['usuario'])){
+                        echo'<a href="l/app/logout.php" id="BotaoLogin"><div>Sair</div></a>';
+                    }else{
+                        echo'<a href="login/" id="BotaoLogin"><div>Entrar</div></a>';
+                    }
+                ?>
             </nav>
                 
-                <div class="DivIC">
-                    
-                    <h1 class="TituloIC">Usuários</h1>
-                    
-                    <a href="incluir/" class="BotaoIC">
-                        <div>Incluir</div>
-                    </a>
-                    <a href="./consultar.php?pag=0" class="BotaoIC">
-                        <div>Consultar</div>
-                    </a>
-                    
-                </div>
-                
-            <footer  class="FooterSemConteudo">
+            <div class="DivIncluir">
+
+                <h1 class="TituloErro">Ocorreu um erro com o site</h1>
+
+            </div>
+            
+            <footer class="FooterSemConteudo">
                 <span id="TextoFooter">© Burger Queen 2021</span>
                 <div id="Redes">
-                    <a href="../sobre/" class="LinkSocial">
-                        <img src="../imagens/twitter.png" class="Social">
+                    <a href="sobre/" class="LinkSocial">
+                        <img src="l/imagens/twitter.png" class="Social">
                     </a>
-                    <a href="../sobre/" class="LinkSocial">
-                        <img src="../imagens/facebook.png" class="Social">
+                    <a href="sobre/" class="LinkSocial">
+                        <img src="l/imagens/facebook.png" class="Social">
                     </a>
-                    <a href="../sobre/" class="LinkSocial">
-                        <img src="../imagens/intagram.png" class="Social">
+                    <a href="sobre/" class="LinkSocial">
+                        <img src="l/imagens/intagram.png" class="Social">
                     </a>
                 </div>
             </footer>
@@ -112,7 +108,7 @@
         <?php
             //mostrar login
             if(isset($_SESSION['usuario'])) {
-                echo"<img src='../imagens/logado.png' id='logado'>";
+                echo"<img src='l/imagens/logado.png' id='logado'>";
                 $user = $_SESSION['usuario'];
                 if ($_SESSION['nivel'] == 1){
                     $nivel = "Funcionario";

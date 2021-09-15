@@ -20,8 +20,13 @@
         <?php
             @session_start();
             if(isset($_SESSION['usuario'])) {
-                header("Location: ../l/cadastrar/");
-                exit;
+                if($_SESSION['nivel'] == 1){
+                    header("Location: ../l/");
+                    exit;
+                }else {
+                    header("Location: ../");
+                    exit;
+                }
             } else {}
         ?>
         
@@ -50,11 +55,13 @@
                     <a href="../cardapio/consultar.php?pag=0">Cardápio</a>
                     
                 </td></tr>
+                <?php
+                if(isset($_SESSION['usuario'])) {}else{echo'
                 <tr><td  class="ItemMenu">
                     
-                    <a href="../cadastrar/">Cadastrar</a>
+                    <a href="../cadastrar/">Cadastrar-se</a>
                     
-                </td></tr>
+                </td></tr>';}?>
                 <tr><td  class="ItemMenu">
                     
                     <a href="../sobre/">Sobre nós</a>
@@ -70,15 +77,21 @@
             
             <nav>
                 <a href="../" id="NomeSite">BurgerQueen</a>
-                <a href="../login/" id="BotaoLogin"><div>Entrar</div></a>
+                <?php
+                    if(isset($_SESSION['usuario'])){
+                        echo'<a href="../l/app/logout.php" id="BotaoLogin"><div>Sair</div></a>';
+                    }else{
+                        echo'<a href="../login/" id="BotaoLogin"><div>Entrar</div></a>';
+                    }
+                ?>
             </nav>
                 
             <div class="DivIC">
 
             <h1 class="TituloIC">Cadastro Concluido</h1>
                     
-                    <a href="./" class="BotaoIC">
-                        <div>Cadastrar novo usuário</div>
+                    <a href="../login" class="BotaoIC">
+                        <div>Fazer Login</div>
                     </a>
 
             </div>
@@ -101,6 +114,18 @@
         
     </tr>
     </table>
-        
+        <?php
+            //mostrar login
+            if(isset($_SESSION['usuario'])) {
+                echo"<img src='../l/imagens/logado.png' id='logado'>";
+                $user = $_SESSION['usuario'];
+                if ($_SESSION['nivel'] == 1){
+                    $nivel = "Funcionario";
+                }else{
+                    $nivel = "Cliente";
+                }
+                echo "<span id='user'>$user | $nivel</span>";
+            }
+        ?>
 	</body>
 </html>

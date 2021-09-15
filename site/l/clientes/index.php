@@ -19,7 +19,7 @@
 
         <?php
             @session_start();
-            if(isset($_SESSION['usuario'])) {} else {
+            if(isset($_SESSION['usuario']) && $_SESSION['nivel'] == 1) {} else {
                 header("Location: ../../login/erro.php");
                 exit;
             }
@@ -57,7 +57,7 @@
                 </td></tr>
                 <tr><td  class="ItemMenu">
                     
-                    <a href="../cadastrar/">Cadastrar</a>
+                    <a href="../cadastrar/">Usuários</a>
                     
                 </td></tr>
                 <tr><td  class="ItemMenu">
@@ -109,12 +109,18 @@
         
     </tr>
     </table>
-        
-	    <img src="../imagens/logado.png" id="logado">
         <?php
-            $user = $_SESSION['usuario'];
-            echo "<span id='user'>$user</span>";
+            //mostrar login
+            if(isset($_SESSION['usuario'])) {
+                echo"<img src='../imagens/logado.png' id='logado'>";
+                $user = $_SESSION['usuario'];
+                if ($_SESSION['nivel'] == 1){
+                    $nivel = "Funcionario";
+                }else{
+                    $nivel = "Cliente";
+                }
+                echo "<span id='user'>$user | $nivel</span>";
+            }
         ?>
-        
 	</body>
 </html>

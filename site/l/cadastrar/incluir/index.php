@@ -2,7 +2,7 @@
 <html lang="pt-br">
 	<head>
         
-		<title>Burger Queen - Clientes | Incluir</title>
+		<title>Burger Queen - Usuarios | Incluir</title>
         
 		<meta charset="UTF-8">
         <meta name="author" content="Pedro Prata e José Eduardo">
@@ -78,57 +78,44 @@
                 <a href="../../app/logout.php" id="BotaoLogin"><div>Sair</div></a>
             </nav>
                 
-                <div class="DivIncluir">
-                    
-                    <h1 class="TituloIncluir">Cadastro do Cliente</h1>
-                      <form method="POST" action="../../app/inclusao_cliente.php" name="form_inclusao">
-                        <table class="TabelaIncluir">
-                          <tr>
-                            <td class="LabelIncluir"><label for="email_cliente">Email:</label><span class="Paragrafo">-</span></td>
+            <div class="DivIncluir">
+
+                <h1 class="TituloIncluir">Cadastrar Usuário</h1>
+                <form method="POST" action="../../app/cadastro_login.php" name="form_cadastro">
+                    <table class="TabelaIncluir">
+                        <tr>
+                            <td class="LabelIncluir">
+                                <label for="usuario">
+                                    Usuário:
+                                </label><span class="Paragrafo">-</span>
+                            </td>
+
                             <td>
-                              <input name="email_cliente" type="text" id="email_cliente" size="30" required="required">
+                                <input type="text" name="usuario" id="usuario" required="required">
                             </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelIncluir"><label for="nome_cliente">Nome:</label><span class="Paragrafo">-</span></td>
+                        </tr>
+                        <tr>
+                            <td class="LabelIncluir">
+                                <label for="senha">
+                                    Senha:
+                                </label><span class="Paragrafo">-</span>
+                            </td>
+
                             <td>
-                              <input name="nome_cliente" type="text" id="nome_cliente" size="30" required="required">
+                                <input type="password" name="senha" id="senha" required="required">
                             </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelIncluir"><label for="telefone_cliente">Telefone:</label><span class="Paragrafo">-</span></td>
-                            <td>
-                              <input type="text" name="telefone_cliente" id="telefone_cliente" size="30"  required="required">
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <br>
+                                <input type="hidden" name="form_cadastro" value="cadastrar">
+                                <input type="hidden" name="l" value="l">
+                                <input type="submit" value="Cadastrar">
                             </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelIncluir"><label for="bairro">Bairro:</label><span class="Paragrafo">-</span></td>
-                            <td>
-                              <input type="text" name="bairro" id="bairro"  size="30"  required="required">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelIncluir"><label for="rua">Rua:</label><span class="Paragrafo">-</span></td>
-                            <td>
-                              <input type="text" name="rua" id="rua"  size="30" required="required">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelIncluir"><label for="numero">Número:</label><span class="Paragrafo">-</span></td>
-                            <td>
-                              <input type="text" name="numero" id="numero"  size="30"  required="required">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td colspan='2'>
-                                <br />
-                                <input type="hidden" name="form_operacao" value="inclusao_cliente">
-                                <input type="submit" name="enviar" value="Enviar">
-                            </td>
-                          </tr>
-                          </table>
-                      </form>
-                    
+                        </tr>
+                    </table>
+                </form>
+
                 </div>
                 
             <footer class="FooterSemConteudo">

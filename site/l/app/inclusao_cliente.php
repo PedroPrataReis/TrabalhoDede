@@ -16,16 +16,19 @@ if ($_POST['form_operacao'] == "inclusao_cliente")
 {
     try
     {
+        include 'sql_injection.php';
+
+// recebe os dados do formulário
+        $email_cliente = limpar($_POST['email_cliente'],false,true,false,true);
+        $nome_cliente = limpar($_POST['nome_cliente'],true);
+        $telefone_cliente = limpar($_POST['telefone_cliente']);
+        $bairro = limpar($_POST['bairro'],true);
+        $rua = limpar($_POST['rua'],true);
+        $numero = limpar($_POST['numero']);
+
 // abre conexão com o banco
         require_once 'conexao.php';
-        
-// recebe os dados do formulário
-        $email_cliente = $_POST['email_cliente'];
-        $nome_cliente = $_POST['nome_cliente'];
-        $telefone_cliente = $_POST['telefone_cliente'];
-        $bairro = $_POST['bairro'];
-        $rua = $_POST['rua'];
-        $numero = $_POST['numero'];
+
 // verifica se já existe um registro na tabela para o código informado (chave duplicada)		
 		$statement = $conexao->prepare('INSERT INTO tb_cliente(email_cliente, nome_cliente, telefone_cliente, bairro, rua, numero) VALUES
 		(:email_cliente, :nome_cliente, :telefone_cliente, :bairro, :rua, :numero)');
@@ -47,8 +50,7 @@ if ($_POST['form_operacao'] == "inclusao_cliente")
         }
 	} catch (Exception $e) {
         // caso ocorra uma exceção, exibe na tela
-        header("Location: ../clientes/consultar.php?pag=".$linhas);
-		echo "<script>alert('Erro".$e->getMessage()."')</script>";
+        header("Location: ../../erro.php");
         die();
     }
 }

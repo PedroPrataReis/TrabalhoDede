@@ -2,9 +2,9 @@
 <html lang="pt-br">
 	<head>
         
-		<title>Burger Queen - Clientes | Incluir</title>
+		    <title>Burger Queen - Usuários | Pesquisa</title>
         
-		<meta charset="UTF-8">
+		    <meta charset="UTF-8">
         <meta name="author" content="Pedro Prata e José Eduardo">
         
         <link rel="stylesheet" href="../../index.css">
@@ -78,58 +78,90 @@
                 <a href="../../app/logout.php" id="BotaoLogin"><div>Sair</div></a>
             </nav>
                 
-                <div class="DivIncluir">
+            <div class="DivIncluir">
+
+            <?php
+                try{
+
+                include '../../app/sql_injection.php';
+
+                $pesquisa = limpar($_POST['pesquisa'],true);
+                $campo = limpar($_POST['campo']);
+                
+                $ComandoSQL='';
+                $result='';
+                
+                require_once '../../app/conexao.php';
+
+                switch ($campo) {                    
+                    case 'user':
+
+                        $ComandoSQL = "SELECT * FROM tb_login WHERE usuario LIKE '%$pesquisa%'";
+
+                        break;
                     
-                    <h1 class="TituloIncluir">Cadastro do Cliente</h1>
-                      <form method="POST" action="../../app/inclusao_cliente.php" name="form_inclusao">
-                        <table class="TabelaIncluir">
-                          <tr>
-                            <td class="LabelIncluir"><label for="email_cliente">Email:</label><span class="Paragrafo">-</span></td>
-                            <td>
-                              <input name="email_cliente" type="text" id="email_cliente" size="30" required="required">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelIncluir"><label for="nome_cliente">Nome:</label><span class="Paragrafo">-</span></td>
-                            <td>
-                              <input name="nome_cliente" type="text" id="nome_cliente" size="30" required="required">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelIncluir"><label for="telefone_cliente">Telefone:</label><span class="Paragrafo">-</span></td>
-                            <td>
-                              <input type="text" name="telefone_cliente" id="telefone_cliente" size="30"  required="required">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelIncluir"><label for="bairro">Bairro:</label><span class="Paragrafo">-</span></td>
-                            <td>
-                              <input type="text" name="bairro" id="bairro"  size="30"  required="required">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelIncluir"><label for="rua">Rua:</label><span class="Paragrafo">-</span></td>
-                            <td>
-                              <input type="text" name="rua" id="rua"  size="30" required="required">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="LabelIncluir"><label for="numero">Número:</label><span class="Paragrafo">-</span></td>
-                            <td>
-                              <input type="text" name="numero" id="numero"  size="30"  required="required">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td colspan='2'>
-                                <br />
-                                <input type="hidden" name="form_operacao" value="inclusao_cliente">
-                                <input type="submit" name="enviar" value="Enviar">
-                            </td>
-                          </tr>
-                          </table>
-                      </form>
+                    default:
+                        
+                        echo"<h1>nao foi possivel encontrar um resultado</h1>";
                     
-                </div>
+                    break;
+                }
+
+                $result = $conexao->query($ComandoSQL);
+
+                echo"<h1 class='TituloCadastrados'>Usuários</h1>
+                            
+                <form method='POST' action='./pesquisa/' name='form_pesquisa'>
+
+                    <label for='pesquisa' class='LabelPesquisa'>Pesquisar:</label>
+                    <input name='pesquisa' type='text' id='pesquisa' required='required' class='InputPesquisa'>
+
+                    <input type='hidden' id='campo' value='user'>
+
+                    <input type='submit' value='Buscar' id='BotaoPesquisar'>
+                    <br><br>
+
+                </form>
+
+                <table class='TabelaCadastrados'>
+                <tr>
+                    <th class='THTabelaCadastrados'>Usuario</th>
+                    <th class='THTabelaCadastrados'>Tipo</th>
+                    <th class='THTabelaCadastrados'>Alterar</th>
+                    <th class='THTabelaCadastrados'>Excluir</th>
+                </tr>
+                ";
+                
+                function nvl($n){
+                    if($n==1){
+                        $n = str_replace('1', 'Funcionário', $n);
+                        return $n;
+                    }else{
+                        $n = str_replace('0', 'Cliente', $n);
+                        return $n;
+                    }
+                }
+
+                while ($i = $result->fetch(PDO::FETCH_OBJ)) {
+                    echo"<tr>
+                    <td class='TDTabelaCadastrados'>".$i->usuario."</td>
+                    <td class='TDTabelaCadastrados'>".nvl($i->nivel)."</td>
+                    <td class='TDTabelaCadastrados'><a href='../alterar/index.php?cd=".$i->usuario."&&re=0'><img src='../../imagens/editar.png' class='Alterar'></a></td>
+                    <td class='TDTabelaCadastrados'><a href='../../app/excluir_login.php?cd=".$i->usuario."&&re=0'><img src='../../imagens/excluir.png' class='Excluir'></a></td>
+                    </tr>";                                    
+                }
+                
+                echo"</table>";
+
+                echo"<br><br><a href='../consultar.php?pag=0' id='botao'>Voltar</a>";
+                } catch (Exception $e) {
+                    // caso ocorra uma exceção, exibe na tela
+                    header("Location: ../../../erro.php");
+                    die();
+                }
+            ?>
+
+            </div>
                 
             <footer class="FooterSemConteudo">
                 <span id="TextoFooter">© Burger Queen 2021</span>

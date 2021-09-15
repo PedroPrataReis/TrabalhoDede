@@ -19,7 +19,7 @@
 
         <?php
             @session_start();
-            if(isset($_SESSION['usuario'])) {} else {
+            if(isset($_SESSION['usuario']) && $_SESSION['nivel'] == 1) {} else {
                 header("Location: ../../login/erro.php");
                 exit;
             }
@@ -57,7 +57,7 @@
                 </td></tr>
                 <tr><td  class="ItemMenu">
                     
-                    <a href="../cadastrar/">Cadastrar</a>
+                    <a href="../cadastrar/">Usuários</a>
                     
                 </td></tr>
                 <tr><td  class="ItemMenu">
@@ -81,7 +81,8 @@
                 <div class="DivCadastrados">
                     
                     <?php
-                        require_once"../app/conexao.php";
+                        include '../app/sql_injection.php';
+                        require_once "../app/conexao.php";
                         try
                         {
                             $id = "";
@@ -145,7 +146,7 @@
                                     </tr>";
                             }
 
-                            $pagina = $_GET['pag'];
+                            $pagina = limpar($_GET['pag']);
                             $contador=0;
 
                             while ($i = $bq->fetch(PDO::FETCH_OBJ)) {
@@ -188,8 +189,10 @@
                             
                             echo"<br><br><a href='incluir/' id='botao'>Incluir</a>";
                             
-                        } catch (PDOException $e) {
-                            echo"erro";
+                        } catch (Exception $e) {
+                            // caso ocorra uma exceção, exibe na tela
+                            header("Location: ../../../erro.php");
+                            die();
                         }
                     ?>
                 
@@ -213,12 +216,18 @@
         
     </tr>
     </table>
-        
-	    <img src="../imagens/logado.png" id="logado">
         <?php
-            $user = $_SESSION['usuario'];
-            echo "<span id='user'>$user</span>";
+            //mostrar login
+            if(isset($_SESSION['usuario'])) {
+                echo"<img src='../imagens/logado.png' id='logado'>";
+                $user = $_SESSION['usuario'];
+                if ($_SESSION['nivel'] == 1){
+                    $nivel = "Funcionario";
+                }else{
+                    $nivel = "Cliente";
+                }
+                echo "<span id='user'>$user | $nivel</span>";
+            }
         ?>
-        
 	</body>
 </html>
